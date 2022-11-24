@@ -78,6 +78,7 @@ int main(int argc, char *argv[]) {
 	
   if(argc == 3) {
     N  = atoi(argv[1]);
+    nfile = N;
     NP = atoi(argv[2]);
   } else {
 //  printf("usage: ''gen-plum.exe 16'' (16KB particle) \n\n");
@@ -190,13 +191,14 @@ int main(int argc, char *argv[]) {
   char fin[5] = ".inp";
   char ch[10];
   sprintf(ch, "%d", nfile);
+
   strncat(fileName, ch, 10);
-  strncat(fileName, fin, 4);
-  printf("\nValor de N = %d", N);
-  printf("\nHello nombre generado %s", fileName);
+  strncat(fileName, fin, 5);
+  printf("Valor de n %d", N);
+  printf("Hello nombre generado %s", fileName);
 
 
-  out = fopen("data.inp","w");
+  out = fopen(fileName,"w");
 
   fprintf(out,"%04d \n", 0);
   fprintf(out,"%06d \n", N);

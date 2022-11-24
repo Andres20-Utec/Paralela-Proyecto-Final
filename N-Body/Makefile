@@ -71,7 +71,7 @@ cpu-8th: phi-GPU.cpp hermite8.h
 
 cpu-6th: phi-GPU.cpp hermite6.h
 	mpicxx $(CXXFLAGS) -DSIXTH  -o $@ $<
-
-cpu-4th: phi-GPU.cpp hermite4.h
+### $@(name of target) @<(first dependency)
+cpu-4th: phi-GPU.cpp hermite4.h ### dependencies
 	mpicxx $(CXXFLAGS) -DFOURTH -o $@ $<
 
