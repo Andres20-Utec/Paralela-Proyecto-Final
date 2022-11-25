@@ -187,7 +187,7 @@ int main(int argc, char *argv[]) {
     } /* i */
   } /* if(CMCORR == 1) */
 
-  char fileName[13] = "data-";
+  char fileName[18] = "Data/data-";
   char fin[5] = ".inp";
   char ch[10];
   sprintf(ch, "%d", nfile);

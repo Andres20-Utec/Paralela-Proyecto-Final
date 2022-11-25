@@ -15,6 +15,7 @@
 #include <cassert>
 #include <time.h>
 #include <sys/time.h>
+#include <string>
 #include <sys/resource.h>
 #include <utility>
 #include <algorithm>
@@ -288,13 +289,15 @@ int main(int argc, char *argv[]){
 	MPI_Comm_rank(MPI_COMM_WORLD, &myRank);
 	MPI_Comm_size(MPI_COMM_WORLD, &n_proc);	
 
-        /* Define the processors names */
-        MPI_Get_processor_name(processor_name, &name_proc);
+	/* Define the processors names */
+	MPI_Get_processor_name(processor_name, &name_proc);
 
-        /* Print the Rank and the names of processors */
-        printf("Rank of the processor %02d on %s \n", myRank, processor_name);
- 
+	/* Print the Rank and the names of processors */
+	std::string fileName(argv[1]);
+	std::cout << fileName << std::endl;
+	printf("Rank of the processor %02d on %s \n", myRank, processor_name);
 #ifdef GPU
+
 	CUDA_MPI_Init(myRank);
 #endif
 
@@ -321,7 +324,7 @@ int main(int argc, char *argv[]){
 //		ifs >> eps >>  t_end >>  dt_disk >>  dt_contr >>  eta >> inp_fname;
 		ifs >> eps >>  t_end >>  dt_disk >>  dt_contr >>  eta >> eta_BH >> inp_fname;
 		if(ifs.fail()) MPI_Abort(MPI_COMM_WORLD, -1);
-		std::ifstream inp(inp_fname);
+		std::ifstream inp(fileName);
 		// std::cerr << inp_fname << std::endl;
 		inp >> diskstep >> nbody >> time_cur;
 		// std::cerr << diskstep << " " << nbody << " " << time_cur << std::endl;
