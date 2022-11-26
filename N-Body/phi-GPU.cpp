@@ -222,22 +222,22 @@ static void energy(int myRank){
 	
 
 	if(myRank == 0){
-		printf("%.4E   %.3E %.3E   % .6E % .6E % .6E % .6E   %.6E \n",
-			   time_cur, Timesteps, n_act_sum,
-			   E_pot, E_kin, E_pot+E_kin, 
-			   eerr,
-			   CPU_time_user-CPU_time_user0);
+		// printf("%.4E   %.3E %.3E   % .6E % .6E % .6E % .6E   %.6E \n",
+		// 	   time_cur, Timesteps, n_act_sum,
+		// 	   E_pot, E_kin, E_pot+E_kin, 
+		// 	   eerr,
+		// 	   CPU_time_user-CPU_time_user0);
 		fflush(stdout);
 
 		FILE *out = fopen("contr.dat","a");
 		assert(out);
 
-		fprintf(out,"%.8E  %.8E  %.8E   % .16E % .16E % .16E   % .16E   % .16E % .16E   % .16E % .16E % .16E   %.8E %.8E %.8E \n",
-				time_cur, Timesteps, n_act_sum,
-				E_pot, E_kin, E_pot+E_kin, 
-			eerr, 
-				rcm_mod, vcm_mod, mom[0], mom[1], mom[2], 
-				CPU_time_real-CPU_time_real0, CPU_time_user-CPU_time_user0, CPU_time_syst-CPU_time_syst0);
+		// fprintf(out,"%.8E  %.8E  %.8E   % .16E % .16E % .16E   % .16E   % .16E % .16E   % .16E % .16E % .16E   %.8E %.8E %.8E \n",
+		// 		time_cur, Timesteps, n_act_sum,
+		// 		E_pot, E_kin, E_pot+E_kin, 
+		// 	eerr, 
+		// 		rcm_mod, vcm_mod, mom[0], mom[1], mom[2], 
+		// 		CPU_time_real-CPU_time_real0, CPU_time_user-CPU_time_user0, CPU_time_syst-CPU_time_syst0);
 		fclose(out);
 	}
 
@@ -294,8 +294,8 @@ int main(int argc, char *argv[]){
 
 	/* Print the Rank and the names of processors */
 	std::string fileName(argv[1]);
-	std::cout << fileName << std::endl;
-	printf("Rank of the processor %02d on %s \n", myRank, processor_name);
+	// std::cout << fileName << std::endl;
+	// printf("Rank of the processor %02d on %s \n", myRank, processor_name);
 #ifdef GPU
 
 	CUDA_MPI_Init(myRank);
@@ -356,10 +356,10 @@ int main(int argc, char *argv[]){
 		}
 #endif
 
-		printf("\n");
+		// printf("\n");
 //		printf("Begin the calculation of phi-GPU program on %03d processors\n", n_proc); 
 #ifdef FOURTH
-    printf("Begin the calculation of phi-GPU4 program on %03d processors\n", n_proc); 
+    // printf("Begin the calculation of phi-GPU4 program on %03d processors\n", n_proc); 
 #endif
 #ifdef SIXTH
     printf("Begin the calculation of phi-GPU6 program on %03d processors\n", n_proc); 
@@ -367,13 +367,13 @@ int main(int argc, char *argv[]){
 #ifdef EIGHTH
     printf("Begin the calculation of phi-GPU8 program on %03d processors\n", n_proc); 
 #endif
-		printf("\n");
-		printf("N       = %06d \t eps      = %.6E \n", nbody, eps);
-		printf("t_beg   = %.6E \t t_end    = %.6E \n", time_cur, t_end);
-		printf("dt_disk = %.6E \t dt_contr = %.6E \n", dt_disk, dt_contr);
-//		printf("eta     = %.6E \n", eta);
-	        printf("eta     = %.6E \t eta_BH   = %.6E \n", eta, eta_BH);
-		printf("\n"); 
+		// printf("\n");
+		// printf("N       = %06d \t eps      = %.6E \n", nbody, eps);
+		// printf("t_beg   = %.6E \t t_end    = %.6E \n", time_cur, t_end);
+		// printf("dt_disk = %.6E \t dt_contr = %.6E \n", dt_disk, dt_contr);
+		// printf("eta     = %.6E \n", eta);
+	  // printf("eta     = %.6E \t eta_BH   = %.6E \n", eta, eta_BH);
+		// printf("\n"); 
 
 		fflush(stdout);
 
@@ -467,17 +467,17 @@ int main(int argc, char *argv[]){
 		get_CPU_time(&CPU_time_real, &CPU_time_user, &CPU_time_syst);
 		double Gflops = Particle::flops * 1.e-9 * Particle::init_iter * double(nbody) * nbody 
 			            / (CPU_time_real - CPU_time_real0);
-		fprintf(stdout, "Initialized, %f Gflops\n", Gflops);
+		//fprintf(stdout, "Initialized, %f Gflops\n", Gflops);
 	}
 
 #if 0
 	if(myRank == 0){
-		for(int i=0; i<nbody; i++){
+		/*for(int i=0; i<nbody; i++){
 			std::cout << force[i].acc << " "
 				      << force[i].jrk << " "
 				      << force[i].snp << " "
 					  << std::endl;
-		}
+		}*/
 	}
 	exit(0);
 #endif
@@ -635,10 +635,10 @@ int main(int argc, char *argv[]){
 	MPI_Reduce(&g6_calls, &g6_calls_sum, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
 	if(myRank == 0){
-		printf("\n");
-		printf("Timesteps = %.0f   Total sum of integrated part. = %.0f   n_act average = %.0f\n", 
-				Timesteps, n_act_sum, n_act_sum/Timesteps);
-		printf("\n");
+		// printf("\n");
+		// printf("Timesteps = %.0f   Total sum of integrated part. = %.0f   n_act average = %.0f\n", 
+		// 		Timesteps, n_act_sum, n_act_sum/Timesteps);
+		// printf("\n");
 		// double Gflops  = 57.0e-9*nbody*n_act_sum/(CPU_time_user - CPU_time_user0);
 		// double GflopsT = 57.0e-9*nbody*g6_calls*48/(CPU_time_user - CPU_time_user0);
 		double Gflops  = Particle::flops*1.e-9*double(nbody)*double(n_act_sum)/(CPU_time_real - CPU_time_real0);
@@ -650,14 +650,14 @@ int main(int argc, char *argv[]){
 		t_force -= t_isend + t_recv;
 		// printf("Time ratio: %10.2E%10.2E%10.2E%10.2E%10.2E\n", t_scan/t_tot, t_pred/t_tot, t_forc/t_tot, t_comm/t_tot, t_corr/t_tot);
 		printf("        sec_tot     usec/step   ratio\n"); 
-		printf("scan :%12.4E%12.4E%12.4E\n", t_scan, t_scan/Timesteps*1.e6, t_scan/t_tot);
-		printf("pred :%12.4E%12.4E%12.4E\n", t_pred, t_pred/Timesteps*1.e6, t_pred/t_tot);
-		printf("jsend:%12.4E%12.4E%12.4E\n", t_jsend, t_jsend/Timesteps*1.e6, t_jsend/t_tot);
-		printf("isend:%12.4E%12.4E%12.4E\n", t_isend, t_isend/Timesteps*1.e6, t_isend/t_tot);
+		// printf("scan :%12.4E%12.4E%12.4E\n", t_scan, t_scan/Timesteps*1.e6, t_scan/t_tot);
+		// printf("pred :%12.4E%12.4E%12.4E\n", t_pred, t_pred/Timesteps*1.e6, t_pred/t_tot);
+		// printf("jsend:%12.4E%12.4E%12.4E\n", t_jsend, t_jsend/Timesteps*1.e6, t_jsend/t_tot);
+		// printf("isend:%12.4E%12.4E%12.4E\n", t_isend, t_isend/Timesteps*1.e6, t_isend/t_tot);
 		printf("force:%12.4E%12.4E%12.4E\n", t_force, t_force/Timesteps*1.e6, t_force/t_tot);
-		printf("recv :%12.4E%12.4E%12.4E\n", t_recv, t_recv/Timesteps*1.e6, t_recv/t_tot);
+		// printf("recv :%12.4E%12.4E%12.4E\n", t_recv, t_recv/Timesteps*1.e6, t_recv/t_tot);
 		printf("comm :%12.4E%12.4E%12.4E\n", t_comm, t_comm/Timesteps*1.e6, t_comm/t_tot);
-		printf("corr :%12.4E%12.4E%12.4E\n", t_corr, t_corr/Timesteps*1.e6, t_corr/t_tot);
+		// printf("corr :%12.4E%12.4E%12.4E\n", t_corr, t_corr/Timesteps*1.e6, t_corr/t_tot);
 		printf("tot  :%12.4E%12.4E%12.4E\n", t_tot, t_tot/Timesteps*1.e6, t_tot/t_tot);
 		// double t_comm_avr = t_comm / Timesteps * 1.e6;
 		// printf("Comm time : %10.2E usec\n", t_comm_avr);

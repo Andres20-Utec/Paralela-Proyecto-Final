@@ -156,13 +156,11 @@ int main(int argc, char *argv[]) {
       tmp_i = ldiv(i, N/64);
 
       if(tmp_i.rem == 0)  {
-        printf(".");
+        // printf(".");
         fflush(stdout);
       }
-
       i++;
     } /* if(r < 100.0) */
-
   } /* while(i < N) */
 
   if(CMCORR == 1) {
@@ -194,8 +192,8 @@ int main(int argc, char *argv[]) {
 
   strncat(fileName, ch, 10);
   strncat(fileName, fin, 5);
-  printf("Valor de n %d", N);
-  printf("Hello nombre generado %s", fileName);
+  // printf("Valor de n %d", N);
+  // printf("Hello nombre generado %s", fileName);
 
 
   out = fopen(fileName,"w");
@@ -210,7 +208,7 @@ int main(int argc, char *argv[]) {
     EK += 0.5*m[i] * (v[i][0]*v[i][0] + v[i][1]*v[i][1] + v[i][2]*v[i][2]);
   }
   printf("\n");
-  printf("N = %d   EK = % .6E  EK_teor = % .6E  DE/EK = % .6E \n", N, EK, EK_teor, (EK-EK_teor)/EK_teor);
+  // printf("N = %d   EK = % .6E  EK_teor = % .6E  DE/EK = % .6E \n", N, EK, EK_teor, (EK-EK_teor)/EK_teor);
   fclose(out);
   return(0);
 }
