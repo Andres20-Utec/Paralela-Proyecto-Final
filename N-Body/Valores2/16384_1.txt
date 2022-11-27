@@ -1,0 +1,6 @@
+Rank of the processor 00 on ag001 
+Real Speed = 5.709 GFlops 
+        sec_tot     usec/step   ratio
+force:  7.8855E+02  3.8923E+04  9.9714E-01
+comm :  1.5434E-02  7.6182E-01  1.9516E-05
+tot  :  7.9081E+02  3.9035E+04  1.0000E+00

@@ -1,0 +1,37 @@
+Rank of the processor 00 on ag001 
+Rank of the processor 02 on ag001 
+Rank of the processor 04 on ag001 
+Rank of the processor 06 on ag001 
+Rank of the processor 08 on ag001 
+Rank of the processor 12 on ag001 
+Rank of the processor 03 on ag001 
+Rank of the processor 07 on ag001 
+Rank of the processor 10 on ag001 
+Rank of the processor 11 on ag001 
+Rank of the processor 15 on ag001 
+Rank of the processor 14 on ag001 
+Rank of the processor 18 on g001 
+Rank of the processor 26 on g001 
+Rank of the processor 28 on g001 
+Rank of the processor 30 on g001 
+Rank of the processor 16 on g001 
+Rank of the processor 19 on g001 
+Rank of the processor 20 on g001 
+Rank of the processor 22 on g001 
+Rank of the processor 23 on g001 
+Rank of the processor 24 on g001 
+Rank of the processor 27 on g001 
+Rank of the processor 31 on g001 
+Rank of the processor 01 on ag001 
+Rank of the processor 09 on ag001 
+Rank of the processor 13 on ag001 
+Rank of the processor 05 on ag001 
+Rank of the processor 17 on g001 
+Rank of the processor 21 on g001 
+Rank of the processor 25 on g001 
+Rank of the processor 29 on g001 
+Real Speed = 132.757 GFlops 
+        sec_tot     usec/step   ratio
+force:  2.5401E+01  1.2538E+03  7.4726E-01
+comm :  7.5060E+00  3.7050E+02  2.2081E-01
+tot  :  3.3993E+01  1.6779E+03  1.0000E+00

@@ -1,0 +1,13 @@
+Rank of the processor 00 on ag001 
+Rank of the processor 02 on ag001 
+Rank of the processor 03 on ag001 
+Rank of the processor 04 on ag001 
+Rank of the processor 06 on ag001 
+Rank of the processor 07 on ag001 
+Rank of the processor 01 on ag001 
+Rank of the processor 05 on ag001 
+Real Speed = 44.882 GFlops 
+        sec_tot     usec/step   ratio
+force:  2.1359E+01  1.6249E+03  9.7859E-01
+comm :  1.7537E-01  1.3341E+01  8.0346E-03
+tot  :  2.1826E+01  1.6604E+03  1.0000E+00
